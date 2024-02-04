@@ -13,13 +13,13 @@ const LoginForm = () => {
 
   useEffect(() => {
     const firebaseConfig = {
-      apiKey: "AIzaSyDC239x3b3AyxAO1c4iq_zILKDV9aZCqEc",
-      authDomain: "social-73969.firebaseapp.com",
-      projectId: "social-73969",
-      storageBucket: "social-73969.appspot.com",
-      messagingSenderId: "1059736885623",
-      appId: "1:1059736885623:web:86f724a4cbc27a3d032972",
-      measurementId: "G-8PHGXRW4H3"
+      apiKey: "AIzaSyAlyc8fnEXSjMH9rhBmh7KEGhlT_KqxJ7I",
+      authDomain: "social-17052.firebaseapp.com",
+      projectId: "social-17052",
+      storageBucket: "social-17052.appspot.com",
+      messagingSenderId: "1053872766660",
+      appId: "1:1053872766660:web:11e5f4e855fae8debdd391",
+      measurementId: "G-C72F32HQXD"
     };
     const app = initializeApp(firebaseConfig);
     getAnalytics(app);
