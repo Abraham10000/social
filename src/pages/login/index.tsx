@@ -12,6 +12,7 @@ require('dotenv').config();
 const LoginForm = () => {
   const router = useRouter();
   const [loginError, setLoginError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const firebaseConfig = {
@@ -29,6 +30,9 @@ const LoginForm = () => {
 
   const handleFacebookLogin = async () => {
     try {
+
+      setLoading(true);
+
       const auth = getAuth();
       const provider = new FacebookAuthProvider();
       provider.addScope('user_posts');
@@ -65,6 +69,8 @@ const LoginForm = () => {
       } else {
         setLoginError(true);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -79,7 +85,7 @@ const LoginForm = () => {
               className={`${styles.button} btn btn-primary btn-block mb-4`}
               onClick={handleFacebookLogin}
             >
-              Connexion avec Facebook
+            {loading ? 'Chargement...' : 'Connexion avec Facebook'}
             </button>
           </div>
         </div>
@@ -99,10 +105,6 @@ const LoginForm = () => {
               Plongez dans une exploration introspective et découvrez comment vos
               interactions sur Facebook influencent votre bien-être émotionnel.
             </div>
-            <div className={styles.additionalInfo}>
-              Morbi in nibh aliquam consequat sed at et phasellus eros. Eget in
-              dolor mattis{" "}
-            </div>
           </div>
         </div>
       </div>
@@ -111,3 +113,4 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
