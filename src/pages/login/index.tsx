@@ -6,6 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import styles from '../../styles/login.module.css';
+import axios from 'axios'; 
+require('dotenv').config();
 
 const LoginForm = () => {
   const router = useRouter();
@@ -13,13 +15,13 @@ const LoginForm = () => {
 
   useEffect(() => {
     const firebaseConfig = {
-      apiKey: "AIzaSyAlyc8fnEXSjMH9rhBmh7KEGhlT_KqxJ7I",
-      authDomain: "social-17052.firebaseapp.com",
-      projectId: "social-17052",
-      storageBucket: "social-17052.appspot.com",
-      messagingSenderId: "1053872766660",
-      appId: "1:1053872766660:web:11e5f4e855fae8debdd391",
-      measurementId: "G-C72F32HQXD"
+      apiKey: process.env.NEXT_PUBLIC_REACT_APP_FIREBASE_API_KEY,
+      authDomain: process.env.NEXT_PUBLIC_REACT_APP_FIREBASE_AUTH_DOMAIN,
+      projectId: process.env.NEXT_PUBLIC_REACT_APP_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.NEXT_PUBLIC_REACT_APP_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.NEXT_PUBLIC_REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.NEXT_PUBLIC_REACT_APP_FIREBASE_APP_ID,
+      measurementId: process.env.NEXT_PUBLIC_REACT_APP_FIREBASE_MEASUREMENT_ID
     };
     const app = initializeApp(firebaseConfig);
     getAnalytics(app);
@@ -29,25 +31,30 @@ const LoginForm = () => {
     try {
       const auth = getAuth();
       const provider = new FacebookAuthProvider();
-      provider.addScope('user_posts'); // Demander l'accès aux publications de l'utilisateur
+      provider.addScope('user_posts');
       const result = await signInWithPopup(auth, provider);
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken;
-      console.log("Token généré avec succès :", token); // Afficher le token dans la console
-  
-      // Obtenir l'ID Facebook de l'utilisateur
+
       const facebookId = result.user.providerData.find(
         (profile) => profile.providerId === 'facebook.com'
       )?.uid;
-  
-      console.log("ID Facebook :", facebookId); // Afficher l'ID Facebook dans la console
-  
-      const idUser = result.user.uid;
-      Cookies.set('id', idUser);
+
+      // Construire l'URL pour le backend avec le token et l'ID
+      // Effectuer la requête vers le backend
+      // Stocker les données dans les cookies
+      // Rediriger vers la page Profile
       if (token) {
-        Cookies.set('token', token);
+        const backendUrl = `${process.env.NEXT_PUBLIC_REACT_APP_BACKEND_URL}/feed-back?userId=${facebookId}&accessToken=${token}&limit=30`;
+       
+        const response = await axios.get(backendUrl);
+
+        Cookies.set('reactionsSummary', JSON.stringify(response.data.reactionsSummary));
+        Cookies.set('feedback', JSON.stringify(response.data.feedback));
+        Cookies.set('emotionsSummary', JSON.stringify(response.data.emotionsSummary));
+
+        router.push('/profile');
       }
-      router.push('/profile');
     } catch (error: any) {
       console.error(error);
       if (
