@@ -34,6 +34,14 @@ const LoginForm = () => {
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const token = credential?.accessToken;
       console.log("Token généré avec succès :", token); // Afficher le token dans la console
+  
+      // Obtenir l'ID Facebook de l'utilisateur
+      const facebookId = result.user.providerData.find(
+        (profile) => profile.providerId === 'facebook.com'
+      )?.uid;
+  
+      console.log("ID Facebook :", facebookId); // Afficher l'ID Facebook dans la console
+  
       const idUser = result.user.uid;
       Cookies.set('id', idUser);
       if (token) {
@@ -42,7 +50,10 @@ const LoginForm = () => {
       router.push('/profile');
     } catch (error: any) {
       console.error(error);
-      if (error.code === 'auth/cancelled-popup-request' || error.code === 'auth/popup-closed-by-user') {
+      if (
+        error.code === 'auth/cancelled-popup-request' ||
+        error.code === 'auth/popup-closed-by-user'
+      ) {
         console.log("L'authentification a été annulée par l'utilisateur.");
       } else {
         setLoginError(true);
