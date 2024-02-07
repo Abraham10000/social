@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useProfile } from '../../utils/ProfileContext';
-import Cookies from 'js-cookie';
-import styles from '../../styles/profile.module.css';
-import Navbar from '@/components/Navbar';
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useProfile } from "../../utils/ProfileContext";
+import Cookies from "js-cookie";
+import styles from "../../styles/profile.module.css";
+import Navbar from "@/components/Navbar";
 
 const Profile = () => {
   const router = useRouter();
   const { profileData, setProfile } = useProfile();
 
   useEffect(() => {
-   
-    const reactionsSummary = JSON.parse(Cookies.get('reactionsSummary') || '{}');
-    const feedback = JSON.parse(Cookies.get('feedback') || '{}');
-    const emotionsSummary = JSON.parse(Cookies.get('emotionsSummary') || '{}');
+    const reactionsSummary = JSON.parse(
+      Cookies.get("reactionsSummary") || "{}"
+    );
+    const feedback = JSON.parse(Cookies.get("feedback") || "{}");
+    const emotionsSummary = JSON.parse(Cookies.get("emotionsSummary") || "{}");
 
     setProfile({ reactionsSummary, feedback, emotionsSummary });
   }, []); // Run only once on component mount
@@ -41,7 +42,8 @@ const Profile = () => {
     <div className={styles.summaryContainer}>
       <h2 className={styles.heading}>Feedback</h2>
       <p className={styles.summaryText}>
-        Score: {profileData.feedback.totalScore} - {profileData.feedback.feedback}
+        Score: {profileData.feedback.totalScore} -{" "}
+        {profileData.feedback.feedback}
       </p>
     </div>
   );
@@ -55,17 +57,12 @@ const Profile = () => {
 
   return (
     <div className={styles.profileContainer}>
+      <Navbar />
       <h1 className={styles.title}>Welcome to Your Profile</h1>
-      <div>
-          <Navbar onLogout={function (): void {
-          throw new Error('Function not implemented.');
-        } } />
-        </div>
+      <div></div>
       {renderReactionsSummary()}
       {renderFeedback()}
       {renderEmotionsSummary()}
-      
-
     </div>
   );
 };
