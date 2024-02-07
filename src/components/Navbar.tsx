@@ -1,8 +1,7 @@
-// Navbar.js
 import React from 'react';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
-import styles from '../../styles/navbar.module.css';
+import styles from '../styles/navbar.module.css';
 
 interface NavbarProps {
   onLogout: () => void;
