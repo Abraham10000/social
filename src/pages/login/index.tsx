@@ -78,16 +78,18 @@ const LoginForm = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-md-6 d-flex align-items-center justify-content-center">
-          <div className={`${styles.leftPanel} text-center`}>
+        <div className={`${styles.leftPanel} text-center`}>
             <h1 className={styles.title}>Se connecter</h1>
+            {loginError && <p className="text-danger">Erreur de connexion. Veuillez réessayer.</p>} 
             <button
               type="button"
               className={`${styles.button} btn btn-primary btn-block mb-4`}
               onClick={handleFacebookLogin}
             >
-            {loading ? 'Chargement...' : 'Connexion avec Facebook'}
+              {loading ? 'Chargement...' : 'Connexion avec Facebook'}
             </button>
-          </div>
+        </div>
+
         </div>
         <div className="col-md-6">
           <div className={`${styles.rightPanel} d-flex align-items-center justify-content-center`}>
