@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useProfile } from "../../utils/ProfileContext";
 import Cookies from "js-cookie";
@@ -8,19 +8,41 @@ import Navbar from "@/components/Navbar";
 const Profile = () => {
   const router = useRouter();
   const { profileData, setProfile } = useProfile();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const reactionsSummary = JSON.parse(
-      Cookies.get("reactionsSummary") || "{}"
-    );
-    const feedback = JSON.parse(Cookies.get("feedback") || "{}");
-    const emotionsSummary = JSON.parse(Cookies.get("emotionsSummary") || "{}");
+    const fetchData = async () => {
+      try {
+        const reactionsSummary = JSON.parse(
+          Cookies.get("reactionsSummary") || "{}"
+        );
+        const feedback = JSON.parse(Cookies.get("feedback") || "{}");
+        const emotionsSummary = JSON.parse(
+          Cookies.get("emotionsSummary") || "{}"
+        );
 
-    setProfile({ reactionsSummary, feedback, emotionsSummary });
-  }, []); // Run only once on component mount
+        setProfile({ reactionsSummary, feedback, emotionsSummary });
+        setLoading(false); // Data loaded successfully
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+        setError("Error loading profile data"); // Set error message
+        setLoading(false); // Set loading to false even if there's an error
+      }
+    };
+
+    fetchData();
+  }, []); 
+  if (loading) {
+    return <div>Loading...</div>; 
+  }
+
+  if (error) {
+    return <div>{error}</div>; 
+  }
 
   if (!profileData) {
-    return null;
+    return <div>Error: Profile data not available</div>;
   }
 
   const renderReactionsSummary = () => (
@@ -59,7 +81,6 @@ const Profile = () => {
     <div className={styles.profileContainer}>
       <Navbar />
       <h1 className={styles.title}>Welcome to Your Profile</h1>
-      <div></div>
       {renderReactionsSummary()}
       {renderFeedback()}
       {renderEmotionsSummary()}
