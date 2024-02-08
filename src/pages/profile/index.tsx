@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useProfile } from '../../utils/ProfileContext';
 import Cookies from 'js-cookie';
 import styles from '../../styles/profile.module.css';
+import Layout from '../app/layout';
 
 const Profile = () => {
   const router = useRouter();
@@ -54,12 +55,14 @@ const Profile = () => {
   );
 
   return (
+    <Layout>
     <div className={styles.profileContainer}>
       <h1 className={styles.title}>Welcome to Your Profile</h1>
       {renderReactionsSummary()}
       {renderFeedback()}
       {renderEmotionsSummary()}
     </div>
+    </Layout>
   );
 };
 

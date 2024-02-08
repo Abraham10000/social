@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Layout from '../app/layout';
 
 const FeedbackComponent = () => {
   const [feedback, setFeedback] = useState('');
@@ -21,11 +22,13 @@ const FeedbackComponent = () => {
   }, []);
 
   return (
+    <Layout>
     <div>
       <h2>Feedback :</h2>
       <p>Total de score : {totalScore}</p>
       <p>Feedback : {feedback}</p>
     </div>
+    </Layout>
   );
 };
 

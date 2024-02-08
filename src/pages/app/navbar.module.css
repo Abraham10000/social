@@ -1,0 +1,34 @@
+/* Navbar.module.css */
+
+.navbar {
+    background-color: #333;
+    padding: 10px 20px;
+  }
+  
+  .navbarNav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+  
+  .navItem {
+    margin-right: 20px;
+  }
+  
+  .navLink {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .activeNavLink {
+    font-weight: bold; /* Rendre le lien actif en gras */
+    color: #00bcd4; /* Changer la couleur du lien actif */
+  }
+  
+  .navLink:hover {
+    color: #00bcd4;
+  }
+  
