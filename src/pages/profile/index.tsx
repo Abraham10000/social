@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import { useProfile } from '../../utils/ProfileContext';
-import Cookies from 'js-cookie';
-import styles from '../../styles/profile.module.css';
-import Layout from '../app/layout';
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useProfile } from "../../utils/ProfileContext";
+import Cookies from "js-cookie";
+import styles from "../../styles/profile.module.css";
+import Menu from "../app/menu";
 
 const Profile = () => {
   const router = useRouter();
   const { profileData, setProfile } = useProfile();
 
   useEffect(() => {
-    // Retrieve data from cookies only on the client side
-    // Store data in the profile context
-    const reactionsSummary = JSON.parse(Cookies.get('reactionsSummary') || '{}');
-    const feedback = JSON.parse(Cookies.get('feedback') || '{}');
-    const emotionsSummary = JSON.parse(Cookies.get('emotionsSummary') || '{}');
+    const reactionsSummary = JSON.parse(
+      Cookies.get("reactionsSummary") || "{}"
+    );
+    const feedback = JSON.parse(Cookies.get("feedback") || "{}");
+    const emotionsSummary = JSON.parse(Cookies.get("emotionsSummary") || "{}");
 
     setProfile({ reactionsSummary, feedback, emotionsSummary });
   }, []); // Run only once on component mount
@@ -42,7 +42,8 @@ const Profile = () => {
     <div className={styles.summaryContainer}>
       <h2 className={styles.heading}>Feedback</h2>
       <p className={styles.summaryText}>
-        Score: {profileData.feedback.totalScore} - {profileData.feedback.feedback}
+        Score: {profileData.feedback.totalScore} -{" "}
+        {profileData.feedback.feedback}
       </p>
     </div>
   );
@@ -55,14 +56,16 @@ const Profile = () => {
   );
 
   return (
-    <Layout>
+    <>
+    <Menu></Menu>
     <div className={styles.profileContainer}>
       <h1 className={styles.title}>Welcome to Your Profile</h1>
+      <div></div>
       {renderReactionsSummary()}
       {renderFeedback()}
       {renderEmotionsSummary()}
     </div>
-    </Layout>
+    </>
   );
 };
 

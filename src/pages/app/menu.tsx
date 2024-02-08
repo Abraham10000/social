@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Link from 'next/link';
-import styles from './navbar.module.css'; // Assurez-vous de créer ce fichier CSS pour styliser votre navbar
+import styles from './menu.module.css';
 import { useRouter } from 'next/router';
+import Navbar from '@/components/Navbar';
 
-const Navbar: React.FC = () => {
+interface MenuProps {
+  children?: ReactNode;
+}
+
+const Menu: React.FC<MenuProps> = ({ children }) => {
   const router = useRouter();
 
   const isActive = (href: string): boolean => {
     return router.pathname === href;
-    };
+  };
 
   return (
     <nav className={styles.navbar}>
@@ -27,9 +32,13 @@ const Navbar: React.FC = () => {
             </div>
           </Link>
         </li>
+        <li>
+          <Navbar />
+        </li>
       </ul>
+      {children}
     </nav>
   );
 };
 
-export default Navbar;
+export default Menu;
