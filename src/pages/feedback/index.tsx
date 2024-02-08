@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Menu from '../app/menu';
 
 const FeedbackComponent = () => {
   const [feedback, setFeedback] = useState('');
@@ -21,11 +22,14 @@ const FeedbackComponent = () => {
   }, []);
 
   return (
+    <>
+    <Menu></Menu>
     <div>
       <h2>Feedback :</h2>
       <p>Total de score : {totalScore}</p>
       <p>Feedback : {feedback}</p>
     </div>
+    </>
   );
 };
 
