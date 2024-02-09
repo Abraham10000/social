@@ -4,6 +4,8 @@ import { useProfile } from "../../utils/ProfileContext";
 import Cookies from "js-cookie";
 import styles from "../../styles/profile.module.css";
 import Navbar from "@/components/Navbar";
+import Chart from "chart.js/auto";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Profile = () => {
   const router = useRouter();
@@ -32,58 +34,142 @@ const Profile = () => {
     };
 
     fetchData();
-  }, []); 
+  }, []);
+
+  useEffect(() => {
+    if (!loading && !error && profileData) {
+      renderChart();
+    }
+  }, [loading, error, profileData]);
+
+  const renderChart = () => {
+    const ctx = document.getElementById("reactionsChart") as HTMLCanvasElement;
+    if (ctx && profileData) {
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: ["Like", "Love", "Wow", "Haha", "Angry"],
+          datasets: [
+            {
+              backgroundColor: [
+                "#4267B2",
+                "#FD7D84",
+                "#1AA1F2",
+                "#FAB81E",
+                "#FFAC53",
+              ],
+              data: [
+                profileData.reactionsSummary.totalLikes,
+                profileData.reactionsSummary.totalLoves,
+                profileData.reactionsSummary.totalWows,
+                profileData.reactionsSummary.totalHahas,
+                profileData.reactionsSummary.totalAngrys,
+              ],
+            },
+          ],
+        },
+        options: {},
+      });
+    }
+  };
+
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>{error}</div>; 
+    return <div>{error}</div>;
   }
 
   if (!profileData) {
     return <div>Error: Profile data not available</div>;
   }
 
-  const renderReactionsSummary = () => (
-    <div className={styles.summaryContainer}>
-      <h2 className={styles.heading}>Reactions Summary</h2>
-      <ul className={styles.summaryList}>
-        <li>Likes: {profileData.reactionsSummary.totalLikes}</li>
-        <li>Loves: {profileData.reactionsSummary.totalLoves}</li>
-        <li>Hahas: {profileData.reactionsSummary.totalHahas}</li>
-        <li>Wows: {profileData.reactionsSummary.totalWows}</li>
-        <li>Sads: {profileData.reactionsSummary.totalSads}</li>
-        <li>Angrys: {profileData.reactionsSummary.totalAngrys}</li>
-        <li>Total Reactions: {profileData.reactionsSummary.totalReactions}</li>
-      </ul>
-    </div>
-  );
-
-  const renderFeedback = () => (
-    <div className={styles.summaryContainer}>
-      <h2 className={styles.heading}>Feedback</h2>
-      <p className={styles.summaryText}>
-        Score: {profileData.feedback.totalScore} -{" "}
-        {profileData.feedback.feedback}
-      </p>
-    </div>
-  );
-
-  const renderEmotionsSummary = () => (
-    <div className={styles.summaryContainer}>
-      <h2 className={styles.heading}>Emotions Summary</h2>
-      <p className={styles.summaryText}>{profileData.emotionsSummary.output}</p>
-    </div>
-  );
-
   return (
-    <div className={styles.profileContainer}>
+    <div className="container">
       <Navbar />
       <h1 className={styles.title}>Welcome to Your Profile</h1>
-      {renderReactionsSummary()}
-      {renderFeedback()}
-      {renderEmotionsSummary()}
+      <div className="row">
+        <div className="col-md-6">
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Reactions Summary</h5>
+              <ul className="list-group">
+                <li className="list-group-item">
+                  <span
+                    className={styles.dot}
+                    style={{ backgroundColor: "#4267B2" }}
+                  ></span>{" "}
+                  Likes: {profileData.reactionsSummary.totalLikes}
+                </li>
+                <li className="list-group-item">
+                  <span
+                    className={styles.dot}
+                    style={{ backgroundColor: "#FD7D84" }}
+                  ></span>{" "}
+                  Loves: {profileData.reactionsSummary.totalLoves}
+                </li>
+                <li className="list-group-item">
+                  <span
+                    className={styles.dot}
+                    style={{ backgroundColor: "#1AA1F2" }}
+                  ></span>{" "}
+                  Hahas: {profileData.reactionsSummary.totalHahas}
+                </li>
+                <li className="list-group-item">
+                  <span
+                    className={styles.dot}
+                    style={{ backgroundColor: "#FAB81E" }}
+                  ></span>{" "}
+                  Wows: {profileData.reactionsSummary.totalWows}
+                </li>
+                <li className="list-group-item">
+                  <span
+                    className={styles.dot}
+                    style={{ backgroundColor: "#FFAC53" }}
+                  ></span>{" "}
+                  Sads: {profileData.reactionsSummary.totalSads}
+                </li>
+                <li className="list-group-item">
+                  <span
+                    className={styles.dot}
+                    style={{ backgroundColor: "#E1306C" }}
+                  ></span>{" "}
+                  Angrys: {profileData.reactionsSummary.totalAngrys}
+                </li>
+                <li className="list-group-item">
+                  Total Reactions: {profileData.reactionsSummary.totalReactions}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="card mt-3">
+            <div className="card-body">
+              <h5 className="card-title">Feedback</h5>
+              <p className="card-text">
+                Score: {profileData.feedback.totalScore} -{" "}
+                {profileData.feedback.feedback}
+              </p>
+            </div>
+          </div>
+          <div className="card mt-3">
+            <div className="card-body">
+              <h5 className="card-title">Emotions Summary</h5>
+              <p className="card-text">{profileData.emotionsSummary.output}</p>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className={styles.reactionsChartContainer}>
+            <canvas
+              id="reactionsChart"
+              className={styles.reactionsChart}
+              width="400"
+              height="400"
+            ></canvas>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
