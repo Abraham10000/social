@@ -25,11 +25,11 @@ const Profile = () => {
         );
 
         setProfile({ reactionsSummary, feedback, emotionsSummary });
-        setLoading(false); // Data loaded successfully
+        setLoading(false); 
       } catch (error) {
         console.error("Error fetching profile data:", error);
-        setError("Error loading profile data"); // Set error message
-        setLoading(false); // Set loading to false even if there's an error
+        setError("Error loading profile data"); 
+        setLoading(false); 
       }
     };
 
