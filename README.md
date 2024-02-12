@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sentiment Detector (Frontend)
 
-## Getting Started
+Sentiment Detector is an application designed to analyze the sentiment of user posts collected via the Facebook Graph API and provide feedback based on the reactions to those posts. This README specifically covers the frontend implementation of Sentiment Detector.
 
-First, run the development server:
+## Installation and Setup
 
+1. Ensure you have Node.js installed on your system. Sentiment Detector requires Node.js for development. You can download and install Node.js from [here](https://nodejs.org/).
+
+2. Clone the frontend repository to your local machine.
+ ```bash
+ git clone https://github.com/SentimentDetector/social.git
+ ```
+
+3. Navigate to the project directory.
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cd social/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Create a `.env.local` file in the project root.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+5. Inside the `.env.local` file, add the following environment variables:
+```plaintext
+NEXT_PUBLIC_REACT_APP_FIREBASE_API_KEY=YOUR_FIREBASE_API_KEY
+NEXT_PUBLIC_REACT_APP_FIREBASE_AUTH_DOMAIN=YOUR_FIREBASE_AUTH_DOMAIN
+NEXT_PUBLIC_REACT_APP_FIREBASE_PROJECT_ID=YOUR_FIREBASE_PROJECT_ID
+NEXT_PUBLIC_REACT_APP_FIREBASE_STORAGE_BUCKET=YOUR_FIREBASE_STORAGE_BUCKET
+NEXT_PUBLIC_REACT_APP_FIREBASE_MESSAGING_SENDER_ID=YOUR_FIREBASE_MESSAGING_SENDER_ID
+NEXT_PUBLIC_REACT_APP_FIREBASE_APP_ID=YOUR_FIREBASE_APP_ID
+NEXT_PUBLIC_REACT_APP_FIREBASE_MEASUREMENT_ID=YOUR_FIREBASE_MEASUREMENT_ID
+NEXT_PUBLIC_REACT_APP_BACKEND_URL=http://localhost:4000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+6. Install dependencies
+ ```bash
+ npm install
+ ```
 
-## Learn More
+## How to Run
 
-To learn more about Next.js, take a look at the following resources:
+Once the installation is complete, you can run the frontend server using the following command:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This will start the development server, and you can access the application in your web browser at `http://localhost:3000`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Code Quality and Testing
 
-## Deploy on Vercel
+This project follows strict coding standards to ensure consistency and maintainability. We use ESLint for linting and Jest for testing.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run ESLint and automatically fix all fixable errors, use the following command:
+```bash
+npx eslint . --fix
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+To run tests with Jest, use the following commands:
+```bash
+npm install
+npm test
+```
+
+## Deployment
+
+The Sentiment Detector frontend application is deployed on [Vercel](https://vercel.com/). You can access the deployed version of the application [here](https://social-six-liard.vercel.app/login).
+
+## Repository
+
+You can find the frontend source code repository [here](https://github.com/SentimentDetector/social.git).
+
+Thank you!
