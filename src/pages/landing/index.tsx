@@ -5,11 +5,11 @@ import Image from "next/image";
 
 const LandingPage = (iconApp : string) => {
     return (
-    <div className={`${styles.bodyContainer}`}>    
-        <div className="container-fluid py-3" id={`${styles.component}`}>
+    <div className={`${styles.bodyContainer} bodyContainer`}>    
+        <div className="container-fluid py-3" id={`${styles.component} component`}>
             <div className="bg-transparent">
                 <NavBar title="SENTINENT" iconSrc="/lg.png"/> 
-                <div className={`${styles.wrapper}`}>
+                <div className={`${styles.wrapper} wrapper`}>
                     <div className="col-xxl-11">
                         <div style={{display : "flex", flexDirection : "column", gap : "24px", alignItems : "center"}}>
                             <div style={{display : "flex", flexDirection : "column", gap : "24px", alignItems : "center"}}>
@@ -39,7 +39,7 @@ const LandingPage = (iconApp : string) => {
                                     </p>
                                 </div>
                             </div>
-                            <button className={`${styles.connectezVous}`}>
+                            <button className={`${styles.connectezVous} connectezVous`}>
                                 <p style={{margin : "18px", color : "antiquewhite"}}>Connectez-vous avec Facebook</p>
                             </button>
                         </div>
