@@ -1,0 +1,55 @@
+.bodyContainer {
+    background-image: url("/Cover.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    width: Fixed (1,728px);height: Hug (117px);padding: 32px, 124px, 32px, 124px;
+}
+.headApp{
+    width: Hug (157px);height: Hug (40px);display: flex; flex-direction: row; align-items: center;
+}
+.iconApp img {
+    width: 50px;height: 50px
+}
+#component {
+    position: relative; 
+}
+.titleContainer {
+    width: 103px;height: 34px;font-family: Poppins, sans-serif;font-size: 25px;
+              font-weight: 700;
+              line-height: 34px;
+              letter-spacing: 0em;
+              text-align: left;
+              color: #04B2D9;
+}
+#component::before {
+    content: ""; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:  url("/gr.jpg");
+    background-size: contain;
+    background-position: top; 
+    background-repeat: no-repeat; 
+    filter: blur(5px); 
+    z-index: -1;
+}
+
+#lg {
+    width: 100px;
+}
+
+.wrapper {
+    display: flex;flex-direction: column;gap: 80px;align-items: center;
+}
+.connectezVous {
+    border-radius: 100px; width: 348px; height: 60px; 
+    padding: 18px, 24px, 18px, 24px; border: 1px; gap: 14px; 
+    background: linear-gradient(0deg, #0E61FE, #04B2D9),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    text-align: center;
+}
