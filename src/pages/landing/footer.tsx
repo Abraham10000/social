@@ -12,13 +12,13 @@ export default function Footer() {
                     <a
                       style={{textDecoration : "none"}}
                       className="text-white fs-4 fw-bold font-family-Montserrat col-12 m-0 py-2"
-                      >My App</a>
+                      >SENTIMENT</a>
                   </p>
                 </div>
                 <p
                   className="text-white fs-6 fw-normal font-family-Montserrat col-12 m-0 py-2"
                 >
-                  © copyright Prog 2024
+                  © copyright SENTIMENT 2024
                 </p>
               </div>
               <div className="col-xxl-0 row">
@@ -37,11 +37,6 @@ export default function Footer() {
                     <a
                       className="text-white fs-6 fw-normal font-family-Montserrat col-12 m-0 py-2"
                       >Login</a>
-                  </p>
-                  <p>
-                    <a
-                      className="text-white fs-6 fw-normal font-family-Montserrat col-12 m-0 py-2"
-                      >FAQ</a>
                   </p>
                   <p>
                     <a

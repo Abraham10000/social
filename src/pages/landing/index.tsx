@@ -3,6 +3,8 @@ import styles from '../../styles/landing.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from "next/image";
 import Footer from "./footer";
+import Link from 'next/link';
+
 
 const LandingPage = (iconApp : string) => {
     return (
@@ -40,9 +42,9 @@ const LandingPage = (iconApp : string) => {
                                     </p>
                                 </div>
                             </div>
-                            <button className={`${styles.connectezVous} connectezVous`}>
+                            <Link href="/login"><button className={`${styles.connectezVous} connectezVous`}>
                                 <p style={{margin : "18px", color : "antiquewhite"}}>Connectez-vous avec Facebook</p>
-                            </button>
+                            </button></Link>
                         </div>
                     </div>
                     <p className="text-center text-dark fs-6 fw-normal font-family-Montserrat col-xxl-6 m-0 px-3 py-2">
