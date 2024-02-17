@@ -1,4 +1,4 @@
-export default function footer() {
+export default function Footer() {
     return (
         <div id="component" className="container-fluid bg-black">
             <div style={{backgroundColor : "black", display : "flex", justifyContent : "space-around", padding : "80px"}}

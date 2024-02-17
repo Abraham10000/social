@@ -2,13 +2,14 @@ import NavBar from "./navbar"
 import styles from '../../styles/landing.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from "next/image";
+import Footer from "./footer";
 
 const LandingPage = (iconApp : string) => {
     return (
     <div className={`${styles.bodyContainer} bodyContainer`}>    
         <div className="container-fluid py-3" id={`${styles.component} component`}>
             <div className="bg-transparent">
-                <NavBar title="SENTINENT" iconSrc="/lg.png"/> 
+                <NavBar title="SENTIMENT" iconSrc="/lg.png"/> 
                 <div className={`${styles.wrapper} wrapper`}>
                     <div className="col-xxl-11">
                         <div style={{display : "flex", flexDirection : "column", gap : "24px", alignItems : "center"}}>
@@ -35,7 +36,7 @@ const LandingPage = (iconApp : string) => {
                                 <div style={{display : "flex", flexDirection : "column", gap : "20px", alignItems : "center"}}>
                                     <img src="/lg.png" id={`${styles.lg}`} className="rounded-4"/>
                                     <p className="text-secondary fs-4 fw-normal font-family-Montserrat m-0">
-                                        Sentiment
+                                        SENTIMENT
                                     </p>
                                 </div>
                             </div>
@@ -76,6 +77,7 @@ const LandingPage = (iconApp : string) => {
                             <Image alt="detail" src="/detail2.png" width={569.33} height={337.38} style={{borderRadius : "25px"}}/>
                         </div>
                     </div>
+                    <Footer/>
                 </div>
             </div>
         </div>
