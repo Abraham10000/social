@@ -23,8 +23,8 @@ const Profile = () => {
         const emotionsSummary = JSON.parse(
           Cookies.get("emotionsSummary") || "{}"
         );
-
-        setProfile({ reactionsSummary, feedback, emotionsSummary });
+        const username = Cookies.get("username")
+        setProfile({ reactionsSummary, feedback, emotionsSummary, username });
         setLoading(false); 
       } catch (error) {
         console.error("Error fetching profile data:", error);

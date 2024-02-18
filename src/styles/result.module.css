@@ -1,0 +1,118 @@
+.bodyContainer {
+    background-image: url("/Cover.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.logoutButton {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease,
+      border-color 0.3s ease;
+  }
+  
+  .logoutButton:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+  }
+  
+  @media (max-width: 768px) {
+    .logoutButton {
+      margin: 18px 0; 
+    }
+  }
+.chartContainer {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0;
+  }
+  #legend {
+    list-style: none;
+    /* position: absolute; */
+    right: 0;
+    top: 0;
+    margin: 20px;
+  }
+  #legend li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  #legend li span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+  }
+
+  .longStyle {
+    display: flex;
+    width: 80%;
+    height: 90vh;
+    padding: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    
+    background: #F8F8F8;
+  }
+  .longStyleChild {
+    display: flex;
+padding: 24px;
+align-items: center;
+justify-content: space-between;
+gap: 24px;
+align-self: stretch;
+
+border-radius: 14px;
+background: var(--White, #FFF);
+  }
+  .anotherStyle{
+    display: flex;
+    width: 80%;
+    height: 90vh;
+    padding: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    
+    background: #F8F8F8
+  }
+  .anotherStyleChild {
+    display: flex;
+padding: 24px;
+align-items: center;
+justify-content: space-between;
+gap: 24px;
+align-self: stretch;
+
+border-radius: 14px;
+background: var(--White, #FFF);
+  }
+.analyse{
+    display: flex;
+              padding: 14px;
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 10px;
+              align-self: stretch;
+              border-radius: 14px 14px 0px 14px;
+              background: rgba(44, 128, 255, 0.08);
+}
+.second {
+    display: flex;
+padding: 24px;
+flex-direction: column;
+align-items: flex-start;
+gap: 24px;
+align-self: stretch;
+
+border-radius: 14px;
+background: #FFF;
+}

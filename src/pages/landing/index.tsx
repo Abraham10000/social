@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Image from "next/image";
 import Footer from "./footer";
 import Link from 'next/link';
+import {ReactTyped} from 'react-typed';
 
 
 const LandingPage = () => {
@@ -18,7 +19,8 @@ const LandingPage = () => {
                             <div style={{display : "flex", flexDirection : "column", gap : "24px", alignItems : "center"}}>
                                 <p style={{fontSize : "3.5rem", fontWeight  : "bold"}}
                                 className="text-center text-dark font-family-Montserrat col-xxl-12 m-0 px-3 py-2">
-                                    Bienvenue sur Sentiment !
+                                    Bienvenue sur{" "}
+                                    <ReactTyped strings={["Sentiment !"]} typeSpeed={100} backSpeed={50} loop />
                                 </p>
                                 <p className="text-center text-dark fs-6 fs-4 fw-normal font-family-Montserrat col-xxl-6 m-0 px-3 py-2">
                                     Comprenez vos habitudes et plongez dans une exploration introspective et découvrez
