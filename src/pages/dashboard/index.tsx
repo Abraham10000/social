@@ -1,4 +1,4 @@
-import Dashboard from "./mock-dashboard"
+import Dashboard from "./dashboard"
 
 
 const MockPage = () => {

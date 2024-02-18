@@ -56,7 +56,7 @@ const LoginForm = () => {
         Cookies.set('feedback', JSON.stringify(response.data.feedback));
         Cookies.set('emotionsSummary', JSON.stringify(response.data.emotionsSummary));
 
-        router.push('/profile');
+        router.push('/dashboard');
       }
     } catch (error: any) {
       console.error(error);
