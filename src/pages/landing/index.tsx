@@ -6,7 +6,7 @@ import Footer from "./footer";
 import Link from 'next/link';
 
 
-const LandingPage = (iconApp : string) => {
+const LandingPage = () => {
     return (
     <div className={`${styles.bodyContainer} bodyContainer`}>    
         <div className="container-fluid py-3" id={`${styles.component} component`}>
