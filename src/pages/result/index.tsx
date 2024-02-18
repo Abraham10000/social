@@ -105,7 +105,7 @@ export default function Result() {
                     <p className="text-center text-black fs-5 fw-bold font-family-Gotham col-xl-1 m-0 px-3 py-2">
                         Statistique
                     </p>
-                    <button className={styles.logoutButton}>
+                    <button className={styles.logoutButton} onClick={handleLogout} disabled={loggingOut}>
                         {loggingOut ? "Déconnexion en cours..." : "Déconnexion"}
                     </button>
                 </div>
