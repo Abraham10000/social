@@ -13,6 +13,7 @@ const LoginForm = () => {
   const router = useRouter();
   const [loginError, setLoginError] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     const firebaseConfig = {
@@ -48,6 +49,11 @@ const LoginForm = () => {
       // Stocker les données dans les cookies
       // Rediriger vers la page Profile
       if (token) {
+        const userInfoResponse = await axios.get(`https://graph.facebook.com/v19.0/me?fields=name&access_token=${token}`);
+        const username = userInfoResponse.data.name;
+        setUsername(username);
+        Cookies.set('username', username);
+
         const backendUrl = `${process.env.NEXT_PUBLIC_REACT_APP_BACKEND_URL}/feed-back?userId=${facebookId}&accessToken=${token}&limit=30`;
        
         const response = await axios.get(backendUrl);

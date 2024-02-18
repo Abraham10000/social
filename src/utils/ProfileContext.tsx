@@ -4,6 +4,7 @@ interface ProfileData {
   reactionsSummary: any; 
   feedback: any; 
   emotionsSummary: any; 
+  username: any;
 }
 
 interface ProfileContextProps {

@@ -5,13 +5,25 @@ import { useProfile } from "../../utils/ProfileContext";
 import Chart from "chart.js/auto";
 import Cookies from "js-cookie";
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 
 export default function Dashboard() {
     const { profileData, setProfile } = useProfile();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-  
+    const router = useRouter();
+    const [loggingOut, setLoggingOut] = useState(false); 
+
+    const handleLogout = () => {
+    setLoggingOut(true); 
+    setTimeout(() => {
+      Cookies.remove("reactionsSummary");
+      Cookies.remove("feedback");
+      Cookies.remove("emotionsSummary");
+      router.replace("/login");
+    }, 1000); 
+  };
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -22,8 +34,8 @@ export default function Dashboard() {
           const emotionsSummary = JSON.parse(
             Cookies.get("emotionsSummary") || "{}"
           );
-  
-          setProfile({ reactionsSummary, feedback, emotionsSummary });
+            const username = Cookies.get("username")
+          setProfile({ reactionsSummary, feedback, emotionsSummary,username });
           setLoading(false); 
         } catch (error) {
           console.error("Error fetching profile data:", error);
@@ -95,8 +107,8 @@ export default function Dashboard() {
                     <p className="text-center text-black fs-5 fw-bold font-family-Gotham col-xl-1 m-0 px-3 py-2">
                         Statistique
                     </p>
-                    <button className={styles.logoutButton}>
-                        Déconnexion
+                    <button className={styles.logoutButton} onClick={handleLogout} disabled={loggingOut}>
+                        {loggingOut ? "Déconnexion en cours..." : "Déconnexion"}
                     </button>
                 </div>
                 </div>
@@ -125,7 +137,7 @@ export default function Dashboard() {
                 <div className={`${styles.longStyle} longStyle`}>
                 <div className={`${styles.longStyleChild} longStyleChild`}>
                     <p className="m-0">Bienvenu sur SENTIMENT</p>
-                    <p className="m-0">Votre nom</p>
+                    <p className="m-0">{profileData.username}</p>
                 </div>
                 <div style={{width: "100%"}}>
                     <div className={`${styles.anotherStyle} anotherStyle`}>
