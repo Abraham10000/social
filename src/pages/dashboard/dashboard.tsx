@@ -153,7 +153,7 @@ export default function Dashboard() {
                                 </ul>
                                 <div className={`${styles.analyse} analyse`}>
                                     <p>{profileData.feedback.feedback}</p>
-                                    <Link href="/mock-result"><div style={{borderRadius: "44px"}} className="bg-primary border border-1 border-white border-opacity-50 col-xxl-3 row justify-content-center align-items-center">
+                                    <Link href="/result"><div style={{borderRadius: "44px"}} className="bg-primary border border-1 border-white border-opacity-50 col-xxl-3 row justify-content-center align-items-center">
                                         <a href="result.html" style={{textDecoration: "none", width: "fit-content"}} className="text-center text-white p-2 fs-6 fw-normal font-family-Gotham m-0">
                                             Voir plus de résultat
                                         </a>
