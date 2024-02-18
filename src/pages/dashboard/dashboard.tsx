@@ -6,6 +6,7 @@ import Chart from "chart.js/auto";
 import Cookies from "js-cookie";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import MockPage from '../mockpage';
 
 
 export default function Dashboard() {
@@ -89,11 +90,11 @@ export default function Dashboard() {
     }
   
     if (error) {
-      return <div>{error}</div>;
+      return <MockPage/>;
     }
   
     if (!profileData) {
-      return <div>Error: Profile data not available</div>;
+      return <MockPage/>;
     }
   
     return (

@@ -5,7 +5,7 @@ import { useProfile } from "../../utils/ProfileContext";
 import Chart from "chart.js/auto";
 import Cookies from "js-cookie";
 
-export default function Result() {
+export default function MockResult() {
     return (
         <div className={`${styles.bodyContainer} bodyContainer`} style={{display: "flex", flexDirection: "column", alignItems: "flex-start"}}>
             <div id="component" className="container-fluid py-2">
