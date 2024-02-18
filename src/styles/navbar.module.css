@@ -20,3 +20,16 @@
   color: #fff;
   border-color: #333;
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-right: 20px; 
+  }
+  
+  .logoutButton {
+    margin: 18px 0; 
+  }
+}
