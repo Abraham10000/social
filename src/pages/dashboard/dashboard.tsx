@@ -122,13 +122,13 @@ export default function Dashboard() {
                                 <div style={{backgroundColor: "rgb(217, 230, 243)"}} className="p-4 rounded-3 row align-items-center">
                                     <img style={{width: "fit-content"}} src="/chart'pie.png"/>
                                     <p className="text-black fs-6 fw-bold font-family-Gotham col-4 m-0">
-                                        Statistique
+                                      <a style={{textDecoration: "none"}} href="dashboard">Statistique</a>
                                     </p>
                                 </div>
                                 <div className="p-4 rounded-3 row align-items-center">
                                     <img style={{width: "fit-content"}} src="/dash.png"/>
                                     <p className="text-black fs-6 fw-bold font-family-Gotham col-4 m-0">
-                                        <a style={{textDecoration: "none"}} href="result.html">Resultat</a>
+                                        <a style={{textDecoration: "none"}} href="result">Resultat</a>
                                     </p>
                                 </div>
                             </div>
@@ -154,8 +154,8 @@ export default function Dashboard() {
                                 </ul>
                                 <div className={`${styles.analyse} analyse`}>
                                     <p>{profileData.feedback.feedback}</p>
-                                    <Link href="/result"><div style={{borderRadius: "44px"}} className="bg-primary border border-1 border-white border-opacity-50 col-xxl-3 row justify-content-center align-items-center">
-                                        <a href="result.html" style={{textDecoration: "none", width: "fit-content"}} className="text-center text-white p-2 fs-6 fw-normal font-family-Gotham m-0">
+                                    <Link href="/result"><div style={{borderRadius: "44px", width: "fit-content"}} className="bg-primary border border-1 border-white border-opacity-50 col-xxl-3 row justify-content-center align-items-center ">
+                                        <a href="result" style={{textDecoration: "none", width: "fit-content"}} className="text-center text-white p-2 fs-6 fw-normal font-family-Gotham m-0">
                                             Voir plus de résultat
                                         </a>
                                     </div></Link>
