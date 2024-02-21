@@ -2,7 +2,11 @@
     background-image: url("/Cover.svg");
     background-size: cover;
     background-repeat: no-repeat;
-    width: fit-content !important;
+}
+@media (max-width: 830px) {
+    .bodyContainer {
+        width: fit-content !important;
+    }
 }
 
 .navbar {
